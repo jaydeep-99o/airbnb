@@ -1,0 +1,42 @@
+
+
+### Node.js ###
+# Ignore node_modules, the directory where dependencies are installed
+/node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-error.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.lock
+
+# Environment Variables
+# Never commit your secrets (API keys, database passwords, etc.)!
+.env
+.env.*
+!.env.example
+
+# Build & Distribution
+# Ignore compiled/transpiled code (e.g., from TypeScript or Babel)
+/dist/
+/build/
+.tmp/
+
+# Test & Coverage
+/coverage/
+.nyc_output/
+
+# OS & System Files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor Config
+.vscode/
+.idea/
+*.swp
