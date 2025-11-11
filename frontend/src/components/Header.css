@@ -1,0 +1,110 @@
+.header {
+  border-bottom: 1px solid #EBEBEB;
+  padding: 16px 0;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #FF385C;
+  font-weight: 700;
+  font-size: 20px;
+  gap: 4px;
+}
+
+.logo-icon {
+  font-size: 32px;
+}
+
+.logo-text {
+  color: #FF385C;
+  letter-spacing: -0.5px;
+}
+
+/* Right Side */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-link {
+  text-decoration: none;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 22px;
+  transition: background-color 0.2s;
+}
+
+.header-link:hover {
+  background-color: #F7F7F7;
+}
+
+.globe-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  color: #222;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.globe-btn:hover {
+  background-color: #F7F7F7;
+}
+
+/* User Menu */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 16px;
+  border: 1px solid #DDDDDD;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.user-menu:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.menu-icon {
+  font-size: 14px;
+  color: #717171;
+}
+
+.user-icon {
+  font-size: 28px;
+  color: #717171;
+}
+
+@media (max-width: 768px) {
+  .header-link {
+    display: none;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+}

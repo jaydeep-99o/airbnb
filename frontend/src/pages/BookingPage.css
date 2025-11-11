@@ -1,0 +1,234 @@
+.booking-page {
+  padding: 32px 0 48px;
+  min-height: calc(100vh - 80px);
+}
+
+.booking-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 24px;
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #717171;
+}
+
+.booking-content h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: #222;
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+}
+
+/* Form Section */
+.booking-form-section {
+  flex: 1;
+}
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.form-section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #222;
+}
+
+.form-section hr {
+  border: none;
+  border-top: 1px solid #EBEBEB;
+  margin: 32px 0;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.date-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.date-input-group {
+  width: 100%;
+}
+
+.date-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+/* React DatePicker custom styles */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.react-datepicker__input-container input:focus {
+  outline: none;
+  border-color: #222;
+  box-shadow: 0 0 0 1px #222;
+}
+
+.error-message {
+  background: #FFF3CD;
+  border: 1px solid #FFE69C;
+  color: #856404;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Booking Summary */
+.booking-summary {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.summary-card {
+  border: 1px solid #DDDDDD;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.summary-listing {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-listing img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.summary-listing h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.summary-listing p {
+  font-size: 14px;
+  color: #717171;
+  margin-bottom: 2px;
+}
+
+.summary-listing .location {
+  font-size: 13px;
+}
+
+.summary-card hr {
+  border: none;
+  border-top: 1px solid #EBEBEB;
+  margin: 24px 0;
+}
+
+.summary-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #222;
+}
+
+.price-row.total {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+.select-dates {
+  text-align: center;
+  color: #717171;
+  font-size: 14px;
+  padding: 16px 0;
+}
+
+@media (max-width: 1024px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .booking-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-content h1 {
+    font-size: 24px;
+  }
+  
+  .date-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-listing {
+    flex-direction: column;
+  }
+  
+  .summary-listing img {
+    width: 100%;
+    height: 200px;
+  }
+}

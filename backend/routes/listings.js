@@ -2,7 +2,76 @@ const express = require('express');
 const router = express.Router();
 const Listing = require('../models/Listing');
 
-// GET all listings with filters
+// PUT FILTER ROUTES FIRST (before /:id)
+// GET unique neighbourhoods
+router.get('/filters/neighbourhoods', async (req, res) => {
+  try {
+    const neighbourhoods = await Listing.distinct('neighbourhood');
+    const neighbourhoodGroups = await Listing.distinct('neighbourhood_group');
+
+    res.json({
+      success: true,
+      data: {
+        neighbourhoods: neighbourhoods.sort(),
+        neighbourhood_groups: neighbourhoodGroups.sort()
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching neighbourhoods:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Error fetching neighbourhoods',
+      message: error.message
+    });
+  }
+});
+
+// GET room types
+router.get('/filters/room-types', async (req, res) => {
+  try {
+    const roomTypes = await Listing.distinct('room_type');
+
+    res.json({
+      success: true,
+      data: roomTypes
+    });
+  } catch (error) {
+    console.error('Error fetching room types:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Error fetching room types',
+      message: error.message
+    });
+  }
+});
+
+// GET single listing by ID - MOVE THIS AFTER FILTER ROUTES
+router.get('/:id', async (req, res) => {
+  try {
+    const listing = await Listing.findOne({ id: Number(req.params.id) });
+
+    if (!listing) {
+      return res.status(404).json({
+        success: false,
+        error: 'Listing not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      data: listing
+    });
+  } catch (error) {
+    console.error('Error fetching listing:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Error fetching listing',
+      message: error.message
+    });
+  }
+});
+
+// GET all listings with filters - KEEP THIS LAST
 router.get('/', async (req, res) => {
   try {
     const {
@@ -68,74 +137,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'Error fetching listings',
-      message: error.message
-    });
-  }
-});
-
-// GET single listing by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const listing = await Listing.findOne({ id: Number(req.params.id) });
-
-    if (!listing) {
-      return res.status(404).json({
-        success: false,
-        error: 'Listing not found'
-      });
-    }
-
-    res.json({
-      success: true,
-      data: listing
-    });
-  } catch (error) {
-    console.error('Error fetching listing:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Error fetching listing',
-      message: error.message
-    });
-  }
-});
-
-// GET unique neighbourhoods
-router.get('/filters/neighbourhoods', async (req, res) => {
-  try {
-    const neighbourhoods = await Listing.distinct('neighbourhood');
-    const neighbourhoodGroups = await Listing.distinct('neighbourhood_group');
-
-    res.json({
-      success: true,
-      data: {
-        neighbourhoods: neighbourhoods.sort(),
-        neighbourhood_groups: neighbourhoodGroups.sort()
-      }
-    });
-  } catch (error) {
-    console.error('Error fetching neighbourhoods:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Error fetching neighbourhoods',
-      message: error.message
-    });
-  }
-});
-
-// GET room types
-router.get('/filters/room-types', async (req, res) => {
-  try {
-    const roomTypes = await Listing.distinct('room_type');
-
-    res.json({
-      success: true,
-      data: roomTypes
-    });
-  } catch (error) {
-    console.error('Error fetching room types:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Error fetching room types',
       message: error.message
     });
   }
